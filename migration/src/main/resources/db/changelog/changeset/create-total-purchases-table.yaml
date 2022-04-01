@@ -1,0 +1,25 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-total-purchases-table
+      author: Aishuakova Ruzana
+      changes:
+        - createTable:
+            tableName: total_purchases
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: total_sum
+                  type: int
+                  constraints:
+                    nullable: false
+              - column:
+                  name: created_at
+                  type: date
+                  constraints:
+                    nullable: false

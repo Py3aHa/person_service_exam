@@ -31,4 +31,5 @@ public interface PurchasesRepository {
             "order by updated_at desc")
     List<Purchases> findByPersonAndItem(Long personId, Long itemId);
 
+    int sum();
 }

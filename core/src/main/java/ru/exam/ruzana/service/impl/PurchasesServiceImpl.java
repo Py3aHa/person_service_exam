@@ -2,12 +2,15 @@ package ru.exam.ruzana.service.impl;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import ru.exam.ruzana.dto.PurchasesDto;
 import ru.exam.ruzana.dto.StorageDto;
 import ru.exam.ruzana.model.Purchases;
+import ru.exam.ruzana.model.TotalPurchases;
 import ru.exam.ruzana.repository.PurchasesRepository;
 import ru.exam.ruzana.repository.StorageDtoRepository;
+import ru.exam.ruzana.repository.TotalPurchasesRepository;
 import ru.exam.ruzana.service.PurchasesService;
 
 import java.time.LocalDate;
@@ -25,6 +28,16 @@ public class PurchasesServiceImpl implements PurchasesService {
 
     @Autowired
     private ModelMapper modelMapper;
+
+    @Autowired
+    private TotalPurchasesRepository totalPurchasesRepository;
+
+    @Scheduled(fixedRate = 86400000)
+    public void addToDatabase(){
+        int total = purchasesRepository.sum();
+        TotalPurchases totalPurchases = new TotalPurchases(null, total, LocalDateTime.now());
+        totalPurchasesRepository.insert(totalPurchases);
+    }
 
     @Override
     public void save(PurchasesDto object) {
@@ -106,4 +119,6 @@ public class PurchasesServiceImpl implements PurchasesService {
         }
         return null;
     }
+
+
 }

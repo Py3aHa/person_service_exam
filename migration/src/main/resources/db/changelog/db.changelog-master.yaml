@@ -1,9 +1,13 @@
 databaseChangeLog:
   - include:
-      file: db/changelog/changeset/create-roles-table.yaml
-  - include:
-      file: db/changelog/changeset/create-person-data-table.yaml
-  - include:
-      file: db/changelog/changeset/create-users-roles-table.yaml
-  - include:
-      file: db/changelog/changeset/create-purchases-table.yaml
+        file: db/changelog/start-0.0.1.sql/create_db_tables.sql
+#  - include:
+#      file: db/changelog/changeset/create-roles-table.yaml
+#  - include:
+#      file: db/changelog/changeset/create-person-data-table.yaml
+#  - include:
+#      file: db/changelog/changeset/create-users-roles-table.yaml
+#  - include:
+#      file: db/changelog/changeset/create-purchases-table.yaml
+#  - include:
+#      file: db/changelog/changeset/create-total-purchases-table.yaml

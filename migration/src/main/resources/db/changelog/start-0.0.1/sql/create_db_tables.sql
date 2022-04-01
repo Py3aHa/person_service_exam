@@ -37,9 +37,18 @@ create table purchases(
     updated_at date
 );
 
-insert into person_data (last_name, first_name, email, password, disabled, birth_dt, age, sex)
-values ('ivanov', 'ivan', 'ivanov@mail.com', 'ivanov', true, '1990-03-07', '31', 'm');
+create table total_purchases(
+    id bigserial primary key ,
+    total_sum integer,
+    createdAt date
+);
 
-insert into roles (role) values ('ROLE_USER');
+-- insert into person_data (last_name, first_name, email, password, disabled, birth_dt, age, sex)
+-- values ('ivanov', 'ivan', 'ivanov@mail.com', 'ivanov', true, '1990-03-07', '31', 'm');
+--
+-- insert into roles (role) values ('ROLE_USER');
+--
+-- insert into users_roles (user_id, role_id) values ('1', '3');
 
-insert into users_roles (user_id, role_id) values ('1', '3');
+insert into purchases (person_id, item_id, quantity, price_per_unit, is_active, created_at, updated_at)
+values ('1', '1', '30', '5', 'true', '2022-04-02', '2022-04-02');

@@ -12,18 +12,23 @@
     </insert>
     <update id="updatePurchase">
         update purchases
-        set person_id = #{personId},
-            item_id = #{itemId},
-            quantity = #{quantity},
+        set person_id      = #{personId},
+            item_id        = #{itemId},
+            quantity       = #{quantity},
             price_per_unit = #{pricePerUnit},
-            is_active = #{isActive},
-            created_at = #{createdAt},
-            updated_at = #{updatedAt}
+            is_active      = #{isActive},
+            created_at     = #{createdAt},
+            updated_at     = #{updatedAt}
     </update>
     <update id="deletePurchase">
         update purchases
-        set is_active = #{isActive},
+        set is_active  = #{isActive},
             updated_at = #{updatedAt}
     </update>
+    <select id="sum" resultType="java.lang.Integer">
+        select sum(quantity * price_per_unit)
+            from purchases
+        where created_at = current_date
+    </select>
 
 </mapper>
