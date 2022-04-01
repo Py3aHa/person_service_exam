@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet id="2022-03-18 10:00:00" author="ruzana" context="main" labels="main">
+        <sqlFile path="start-0.0.1/sql/create_db_tables.sql" relativeToChangelogFile="true"/>
+        <rollback>
+            <sqlFile path="start-0.0.1/sql/rollback/create_db_tables_rollback.sql" relativeToChangelogFile="true"/>
+        </rollback>
+    </changeSet>
+    <changeSet id="2022-03-18 10:00:00" author="ruzana" context="main" labels="main">
+        <createTable tableName="contact">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="phone_number" type="varchar(32)"><constraints nullable="false"/></column>
+            <column name="email" type="varchar(128)"><constraints unique="true"/></column>
+            <column name="profile_link" type="text"><constraints unique="true"/></column>
+        </createTable>
+    </changeSet>
+
+</databaseChangeLog>

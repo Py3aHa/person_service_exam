@@ -1,0 +1,52 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-purchases-table
+      author: Aishuakova Ruzana
+      changes:
+        - createTable:
+            tableName: purchases
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: person_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+#                    foreignKeyName: person_id
+#                    referencedTableName: person_data
+#                    referencedColumnNames: id
+              - column:
+                  name: item_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+#                    foreignKeyName: item_id
+#                    referencedTableName: storage
+#                    referencedColumnNames: id
+              - column:
+                  name: quantity
+                  type: int
+                  constraints:
+                    nullable: false
+              - column:
+                  name: price_per_unit
+                  type: int
+                  constraints:
+                    nullable: false
+              - column:
+                  name: is_active
+                  type: boolean
+                  constraints:
+                    nullable: false
+              - column:
+                  name: created_at
+                  type: date
+              - column:
+                  name: updated_at
+                  type: date

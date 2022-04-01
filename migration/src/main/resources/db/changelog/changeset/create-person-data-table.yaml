@@ -1,0 +1,54 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-person-data-table
+      author: Aishuakova Ruzana
+      changes:
+        - createTable:
+            tableName: person_data
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: last_name
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: first_name
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: email
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+                    unique: true
+              - column:
+                  name: password
+                  type: varchar(128)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: disabled
+                  type: boolean
+                  constraints:
+                    nullable: false
+              - column:
+                  name: birth_dt
+                  type: date
+                  constraints:
+                    nullable: false
+              - column:
+                  name: age
+                  type: int
+              - column:
+                  name: sex
+                  type: char
+                  constraints:
+                    nullable: false
